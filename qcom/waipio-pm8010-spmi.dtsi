@@ -201,9 +201,9 @@
 		L7J: pm8010j_l7: regulator-pm8010j-l7 {
 			regulator-name = "pm8010j_l7";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <3304000>;
-			regulator-max-microvolt = <3304000>;
-			qcom,init-voltage = <3304000>;
+			regulator-min-microvolt = <2700000>;
+			regulator-max-microvolt = <2700000>;
+			qcom,init-voltage = <2700000>;
 		};
 	};
 };

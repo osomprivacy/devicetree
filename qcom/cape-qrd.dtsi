@@ -150,6 +150,50 @@
 	qcom,wireless-fw-name = "idt9415.bin";
 };
 
+&tlmm {
+	dw3000_default_state: dw3000-default {
+		irq {
+			pins = "gpio71";
+			function = "gpio";
+			bias-disable;
+		};
+
+		reset {
+			pins = "gpio70";
+			function = "gpio";
+			drive-strength = <16>;
+			bias-disable;
+		};
+	};
+};
+
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+&qupv3_se19_spi {
+	status = "okay";
+	qcom,disable-autosuspend;
+	qcom,disable-dma;
+	qcom,low-latency;
+
+	dw3720: uwb@0 {
+		compatible = "decawave,dw3000";
+		reg = <0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&dw3000_default_state>;
+		spi-max-frequency = <38000000>;
+		interrupts-extended = <&tlmm 71 IRQ_TYPE_LEVEL_HIGH>;
+		reset-gpio = <&tlmm 70 GPIO_ACTIVE_LOW>;
+		power_reg-supply = <&S10B>;
+		power_reg_1p8-supply = <&L4J>;
+		power_reg_2p5-supply = <&L7J>;
+		decawave,eui64 = /bits/ 64 <0>;
+		decawave,panid = /bits/ 16 <0>;
+		clocks = <&clock_rpmh RPMH_RF_CLK4>;
+		clock-names = "rf_clk";
+		status = "okay";
+	};
+};
+
 &qupv3_se5_i2c {
 	status = "ok";
 
