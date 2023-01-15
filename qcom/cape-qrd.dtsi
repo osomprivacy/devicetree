@@ -188,7 +188,7 @@
 		power_reg_2p5-supply = <&L7J>;
 		decawave,eui64 = /bits/ 64 <0>;
 		decawave,panid = /bits/ 16 <0>;
-		clocks = <&clock_rpmh RPMH_RF_CLK4>;
+		clocks = <&clock_rpmh RPMH_RF_CLK5>;
 		clock-names = "rf_clk";
 		status = "okay";
 	};
