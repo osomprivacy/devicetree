@@ -182,7 +182,7 @@
 		pinctrl-0 = <&dw3000_default_state>;
 		spi-max-frequency = <38000000>;
 		interrupts-extended = <&tlmm 71 IRQ_TYPE_LEVEL_HIGH>;
-		reset-gpio = <&tlmm 70 GPIO_ACTIVE_LOW>;
+		reset-gpio = <&tlmm 70 GPIO_OPEN_DRAIN>;
 		power_reg-supply = <&S10B>;
 		power_reg_1p8-supply = <&L4J>;
 		power_reg_2p5-supply = <&L7J>;
