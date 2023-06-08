@@ -1,9 +1,5 @@
 #include <dt-bindings/thermal/thermal_qti.h>
 
-&msm_gpu {
-    #cooling-cells = <2>;
-};
-
 &soc {
 	tsens0: thermal-sensor@c263000 {
 		compatible = "qcom,tsens-v2";
@@ -180,11 +176,6 @@
 		qcom,cpus = <&CPU0 &CPU6>;
 	};
 
-	qcom,devfreq-cdev {
-		compatible = "qcom,devfreq-cdev";
-		qcom,devfreq = <&msm_gpu>;
-	};
-
 	qcom,userspace-cdev {
 		compatible = "qcom,userspace-cooling-devices";
 
@@ -194,8 +185,6 @@
 		};
 	};
 };
-
-#include "ravelin-thermal-modem.dtsi"
 
 &thermal_zones {
 	aoss-0 {
@@ -664,13 +653,6 @@
 				type = "passive";
 			};
 		};
-
-		cooling-maps {
-			gpu_cdev {
-				trip = <&gpu_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
-			};
-		};
 	};
 
 	camera {
@@ -855,13 +837,6 @@
 				type = "passive";
 			};
 		};
-
-		cooling-maps {
-			wcss_cx_vdd_cdev {
-				trip = <&min_temp_0_trip>;
-				cooling-device = <&cx_cdev 1 1>;
-			};
-		};
 	};
 
 	zeroc-1-step {
@@ -879,13 +854,6 @@
 				temperature = <1>;
 				hysteresis = <1>;
 				type = "passive";
-			};
-		};
-
-		cooling-maps {
-			wcss_cx_vdd_cdev {
-				trip = <&min_temp_1_trip>;
-				cooling-device = <&cx_cdev 1 1>;
 			};
 		};
 	};
