@@ -152,16 +152,14 @@
 
 &tlmm {
 	dw3000_default_state: dw3000-default {
-		irq {
-			pins = "gpio71";
+		mux {
+			pins = "gpio70", "gpio71";
 			function = "gpio";
-			bias-disable;
 		};
 
-		reset {
-			pins = "gpio70";
-			function = "gpio";
-			drive-strength = <16>;
+		config {
+			pins = "gpio70", "gpio71";
+			drive-strength = <6>;
 			bias-disable;
 		};
 	};
