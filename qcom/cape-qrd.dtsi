@@ -153,12 +153,12 @@
 &tlmm {
 	dw3000_default_state: dw3000-default {
 		mux {
-			pins = "gpio70", "gpio71";
+			pins = "gpio56", "gpio70", "gpio71";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio70", "gpio71";
+			pins = "gpio56", "gpio70", "gpio71";
 			drive-strength = <6>;
 			bias-disable;
 		};
@@ -181,6 +181,7 @@
 		spi-max-frequency = <38000000>;
 		interrupts-extended = <&tlmm 71 IRQ_TYPE_LEVEL_HIGH>;
 		reset-gpio = <&tlmm 70 GPIO_OPEN_DRAIN>;
+		wakeup-gpio = <&tlmm 56 GPIO_ACTIVE_HIGH>;
 		power_reg-supply = <&S10B>;
 		power_reg_1p8-supply = <&L4J>;
 		power_reg_2p5-supply = <&L7J>;
